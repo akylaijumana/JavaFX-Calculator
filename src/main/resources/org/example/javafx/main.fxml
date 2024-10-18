@@ -16,7 +16,6 @@
 
    <MenuBar AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
       <Menu text="File">
-         <MenuItem fx:id="clearMenuItem" text="Clear" onAction="#onClearMenuClick"/>
          <MenuItem fx:id="exitMenuItem" text="Exit" onAction="#onExitMenuClick"/>
       </Menu>
    </MenuBar>
