@@ -11,8 +11,6 @@ public class HelloController {
     @FXML
     private TextField text;
     @FXML
-    private MenuItem clearMenuItem;
-    @FXML
     private MenuItem exitMenuItem;
 
     @FXML
@@ -59,18 +57,20 @@ public class HelloController {
 
     @FXML
     private void onEqualClick() {
-        String op2 = text.getText();
-        calc.setOp2(Integer.parseInt(op2));
-        calc.calculate();
-        text.setText("" + calc.getResult());
+        try {
+            String op2 = text.getText();
+            calc.setOp2(Double.parseDouble(op2));
+            calc.calculate();
+            text.setText(String.valueOf(calc.getResult()));
+        } catch (NumberFormatException e) {
+            text.setText("Error");
+        }
     }
 
     @FXML
     private void initialize() {
         exitMenuItem.setOnAction(event -> onExitMenuClick());
-
     }
-
 
     @FXML
     private void onExitMenuClick() {
@@ -80,10 +80,11 @@ public class HelloController {
     @FXML
     private void onDotClick() {
         String currentText = text.getText();
-        if (!currentText.contains(".")) {  // Prevent adding multiple dots
+        if (!currentText.contains(".")) {
             text.setText(currentText + ".");
         }
     }
+
     private void appendToTextField(String value) {
         String currentText = text.getText();
         text.setText(currentText + value);
@@ -92,9 +93,9 @@ public class HelloController {
     private void setOperator(char operator) {
         String op1 = text.getText();
         if (!op1.isEmpty()) {
-            calc.setOp1(Integer.parseInt(op1));
+            calc.setOp1(Double.parseDouble(op1));
             calc.setOperator(operator);
-            text.setText(""); // Clear the text field for the next input
+            text.setText("");
         }
     }
 }
