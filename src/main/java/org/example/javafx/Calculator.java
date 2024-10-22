@@ -2,10 +2,10 @@ package org.example.javafx;
 
 public class Calculator {
 
-    private double op1;       // Changed to double for floating-point support
-    private double op2;       // Changed to double for floating-point support
+    private double op1;     
+    private double op2;      
     private char operator;
-    private double result;     // Changed to double for floating-point support
+    private double result;    
 
     public void calculate() {
         switch (this.operator) {
